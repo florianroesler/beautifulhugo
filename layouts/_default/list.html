@@ -40,6 +40,8 @@
                 {{ partial "post_meta.html" . }}
                 {{ end }}
               </p>
+
+              {{ if not .Site.Params.omitPostPreview }}
               <div class="post-entry">
                 {{ if .Truncated }}
                 {{ .Summary }}
@@ -48,6 +50,7 @@
                 {{ .Content }}
                 {{ end }}
               </div>
+              {{ end }}
 
               {{ if .Params.tags }}
               <div class="blog-tags">
