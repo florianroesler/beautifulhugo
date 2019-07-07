@@ -47,6 +47,12 @@ title = "Reddit"
 icon = "fab fa-reddit-alien"
 
 [[social_icons]]
+id = "medium"
+url = "https://medium.com/@%s"
+title = "Medium"
+icon = "fab fa-medium-m"
+
+[[social_icons]]
 id = "linkedin"
 url = "https://linkedin.com/in/%s"
 title = "LinkedIn"
