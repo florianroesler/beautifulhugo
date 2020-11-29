@@ -25,3 +25,12 @@ footer {
     }
   }
 }
+
+.footer__title-link {
+  text-decoration: none;
+  color: $grey-2;
+
+  &:hover {
+    color: $hoverColor;
+  }
+}
