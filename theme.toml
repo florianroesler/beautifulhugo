@@ -1,17 +1,10 @@
-name = "Beautiful Hugo"
+name = "Simple Hugo"
 license = "MIT"
-licenselink = "https://github.com/halogenica/Hugo-BeautifulHugo/blob/master/LICENSE"
-description = "A port of Beautiful Jekyll theme"
+description = "Very simple blogging theme"
 tags = ["blog", "company", "portfolio", "projects", "minimal", "responsive", "seo"]
-features = ["blog", "themes", "disqus", "minimal", "responsive", "staticman"]
+features = ["blog", "themes", "minimal", "responsive"]
 min_version = 0.48
 
 [author]
-    name = "halogenica"
-    homepage = "http://halogenica.net"
-
-# If Porting existing theme
-[original]
-    author =  "dattali"
-    homepage = "http://deanattali.com/beautiful-jekyll/"
-    repo = "https://github.com/daattali/beautiful-jekyll"
+    name = "florianroesler"
+    homepage = "https://github.com/florianroesler"

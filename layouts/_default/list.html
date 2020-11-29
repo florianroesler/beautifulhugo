@@ -1,84 +1,66 @@
 {{ define "main" }}
 <div class="container" role="main">
-  <div class="row">
-    <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
-      {{ with .Content }}
-      <div class="well">
-        {{.}}
-      </div>
-      {{ end }}
-      <div class="posts-list">
-        {{ range .Paginator.Pages }}
-        <article class="post-preview">
-          <div class="row">
-            {{ $thumbnailSource := .Resources.GetMatch "images/thumbnail.*" }}
-            {{ if $thumbnailSource}}
-            <div class="col-lg-2 col-md-4 visible-lg-block visible-md-block">
-              {{ $thumbnail := $thumbnailSource.Resize "x250 q50" }}
-              <img src="{{ $thumbnail.Permalink }}" alt="{{ .Title }}" />
-            </div>
-            {{ end }}
-
-
-            <div class="{{ if $thumbnailSource}} col-lg-10 col-md-8 {{ else }} col-lg-12 col-md-12 {{ end }}">
-
-
-              <a href="{{ .Permalink }}">
-                <h2 class="post-title">{{ .Title }}</h2>
-
-                {{ if .Params.subtitle }}
-                <h3 class="post-subtitle">
-                  {{ .Params.subtitle }}
-                </h3>
-                {{ end }}
-              </a>
-
-              <p class="post-meta">
-                {{ if .Site.Params.MinimalPostMeta }}
-                {{ partial "minimal_post_meta.html" . }}
-                {{ else }}
-                {{ partial "post_meta.html" . }}
-                {{ end }}
-              </p>
-
-              {{ if not .Site.Params.omitPostPreview }}
-              <div class="post-entry">
-                {{ if .Truncated }}
-                {{ .Summary }}
-                <a href="{{ .Permalink }}" class="post-read-more">[{{ i18n "readMore" }}]</a>
-                {{ else }}
-                {{ .Content }}
-                {{ end }}
-              </div>
-              {{ end }}
-
-              {{ if .Params.tags }}
-              <div class="blog-tags">
-                {{ range .Params.tags }}
-                <a href="{{ $.Site.LanguagePrefix | absURL }}/tags/{{ . | urlize }}/">{{ . }}</a>&nbsp;
-                {{ end }}
-              </div>
-              {{ end }}
-            </div>
-
-          </article>
-          {{ end }}
-        </div>
-        {{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
-        <ul class="pager main-pager">
-          {{ if .Paginator.HasPrev }}
-          <li class="previous">
-            <a href="{{ .URL }}page/{{ .Paginator.Prev.PageNumber }}/">&larr; {{ i18n "newerPosts" }}</a>
-          </li>
-          {{ end }}
-          {{ if .Paginator.HasNext }}
-          <li class="next">
-            <a href="{{ .URL }}page/{{ .Paginator.Next.PageNumber }}/">{{ i18n "olderPosts" }} &rarr;</a>
-          </li>
-          {{ end }}
-        </ul>
-        {{ end }}
-      </div>
-    </div>
+  {{ with .Content }}
+  <div class="well">
+    {{.}}
   </div>
   {{ end }}
+  <div class="posts-list">
+    {{ range .Paginator.Pages }}
+    <article class="post-preview">
+      {{ $thumbnailSource := .Resources.GetMatch "images/thumbnail.*" }}
+      {{ if $thumbnailSource}}
+      <div class="visual-preview">
+        {{ $thumbnail := $thumbnailSource.Resize "x180 q90" }}
+        <img src="{{ $thumbnail.Permalink }}" alt="{{ .Title }}" />
+
+        <p class="post-meta">
+          {{ if .Site.Params.MinimalPostMeta }}
+          {{ partial "minimal_post_meta.html" . }}
+          {{ else }}
+          {{ partial "post_meta.html" . }}
+          {{ end }}
+        </p>
+      </div>
+      {{ end }}
+
+      <div class="content-preview">
+        <a href="{{ .Permalink }}">
+          <h2 class="post-title">{{ .Title }}</h2>
+        </a>
+
+        <p class="post-subtitle">
+          {{ if .Params.subtitle }}
+            {{ .Params.subtitle }}
+          {{ else }}
+            {{ .Summary }}
+          {{ end }}
+        </p>
+
+        {{ if .Params.tags }}
+        <div class="blog-tags">
+          {{ range .Params.tags }}
+          <a href="{{ $.Site.LanguagePrefix | absURL }}/tags/{{ . | urlize }}/">{{ . }}</a>&nbsp;
+          {{ end }}
+        </div>
+        {{ end }}
+
+      </article>
+      {{ end }}
+    </div>
+    {{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
+    <ul class="pager main-pager">
+      {{ if .Paginator.HasPrev }}
+      <li class="previous">
+        <a href="{{ .URL }}page/{{ .Paginator.Prev.PageNumber }}/">&larr; {{ i18n "newerPosts" }}</a>
+      </li>
+      {{ end }}
+      {{ if .Paginator.HasNext }}
+      <li class="next">
+        <a href="{{ .URL }}page/{{ .Paginator.Next.PageNumber }}/">{{ i18n "olderPosts" }} &rarr;</a>
+      </li>
+      {{ end }}
+    </ul>
+    {{ end }}
+</div>
+{{ end }}

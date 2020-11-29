@@ -1,0 +1,55 @@
+.posts-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-preview {
+  display: flex;
+
+  + .post-preview {
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid $grey-1;
+  }
+}
+
+.visual-preview {
+  display: flex;
+  flex-direction: column;
+  margin-right: 24px;
+
+  img {
+    width: 180px;
+    height: 96px;
+    object-fit: contain;
+  }
+
+  .post-meta {
+    text-align: center;
+    color: $grey-2;
+    font-family: $fontSans;
+    font-size: 12px;
+  }
+}
+
+.content-preview {
+  a {
+    color: $textBlack;
+    text-decoration: none;
+
+    &:hover {
+      color: $hoverColor;
+    }
+  }
+
+  h2 {
+    margin-top: 0;
+    line-height: 1.5;
+  }
+
+  p {
+    font-family: $fontSans;
+    font-size: 14px;
+    color: $grey-3;
+  }
+}
