@@ -1,15 +1,6 @@
 /* --- General --- */
 
-body {
-  font-family: 'Crimson Text', 'Times New Roman', serif;
-  font-size: 21px;
-  color: #404040;
-  position: relative;
-  background: #FFF;
-  display: flex;
-  flex-flow: column;
-  height: 100vh;
-}
+
 .container[role=main] {
   margin-bottom:50px;
   flex: 1 0 auto;
@@ -33,10 +24,7 @@ p a {
   /* text-decoration: underline */
   color: #008AFF;
 }
-h1,h2,h3,h4,h5,h6 {
-  font-family: 'Poppins', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: 800;
-}
+
 
 .heading h1 {
   font-weight: 400;

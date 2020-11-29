@@ -1,0 +1,23 @@
+.navbar {
+  width: 100%;
+  display: flex;
+
+  padding: 24px 32px;
+  justify-content: space-between;
+}
+
+.navbar__brand {
+  font-family: $fontSans;
+}
+
+.navbar__items {
+  display: flex;
+}
+
+.navbar__item {
+  font-family: $fontSans;
+
+  + .navbar__item {
+    margin-left: 16px;
+  }
+}
