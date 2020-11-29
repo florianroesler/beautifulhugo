@@ -1,7 +1,7 @@
-.page-heading {
+.heading {
   text-align: center;
   margin-bottom: 48px;
-  border-bottom: 1px solid #e2e2e2;
+  border-bottom: 1px solid $lightPrimaryColor;
   padding: 16px 0;
 
   h1 {
@@ -12,6 +12,7 @@
   .page-subheading {
     display: block;
     font-family: $fontSans;
+    color: $grey-2;
     font-size: 18px;
     margin-top: 16px;
   }

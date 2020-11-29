@@ -4,10 +4,20 @@
 
   padding: 24px 32px;
   justify-content: space-between;
+
+  a {
+    font-family: $fontSans;
+    text-decoration: none;
+    color: $grey-2;
+
+    &:hover {
+      color: $hoverColor;
+    }
+  }
 }
 
 .navbar__brand {
-  font-family: $fontSans;
+  font-size: 20px;
 }
 
 .navbar__items {

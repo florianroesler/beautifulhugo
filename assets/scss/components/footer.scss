@@ -1,0 +1,27 @@
+footer {
+  display: flex;
+  margin-top: 32px;
+  background-color: $grey-1;
+  padding: 32px;
+
+  .credits {
+    font-family: $fontSans;
+    font-size: 16px;
+    margin-bottom: 0;
+  }
+}
+
+.footer-links {
+  display: flex;
+  justify-content: space-around;
+}
+
+.footer-links__external-link {
+  a {
+    color: $grey-2;
+
+    &:hover {
+      color: $hoverColor;
+    }
+  }
+}
