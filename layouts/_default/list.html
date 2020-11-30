@@ -8,21 +8,17 @@
   <div class="posts-list">
     {{ range .Paginator.Pages }}
     <article class="post-preview">
-      {{ $thumbnailSource := .Resources.GetMatch "images/thumbnail.*" }}
-      {{ if $thumbnailSource}}
       <div class="visual-preview">
-        {{ $thumbnail := $thumbnailSource.Resize "x180 q90" }}
-        <img src="{{ $thumbnail.Permalink }}" alt="{{ .Title }}" />
+        {{ $thumbnailSource := .Resources.GetMatch "images/thumbnail.*" }}
+        {{ if $thumbnailSource}}
+          {{ $thumbnail := $thumbnailSource.Resize "x180 q90" }}
+          <img src="{{ $thumbnail.Permalink }}" alt="{{ .Title }}" />
+        {{ end }}
 
         <p class="post-meta">
-          {{ if .Site.Params.MinimalPostMeta }}
-          {{ partial "minimal_post_meta.html" . }}
-          {{ else }}
           {{ partial "post_meta.html" . }}
-          {{ end }}
         </p>
       </div>
-      {{ end }}
 
       <div class="content-preview">
         <a href="{{ .Permalink }}">

@@ -1,84 +1,57 @@
 {{ define "main" }}
 <div class="container" role="main">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-      <article role="main" class="blog-post">
-        {{ .Content }}
 
-        {{ if .Params.tags }}
-          <div class="blog-tags">
-            {{ range .Params.tags }}
-              <a href="{{ $.Site.LanguagePrefix | absURL }}/tags/{{ . | urlize }}/">{{ . }}</a>&nbsp;
-            {{ end }}
-          </div>
+  <article role="main" class="blog-post">
+    {{ if .Site.Params.readingTime }}
+      <div class="blog-post__reading_time">
+        <i class="fas fa-clock"></i>{{ i18n "readingTime"}}{{ .ReadingTime }} {{ i18n "readTime" }} reading time
+      </div>
+    {{ end }}
+
+    {{ .Content }}
+
+    {{ if .Params.tags }}
+      <div class="blog-post__tags">
+        <h4>Tags</h4>
+        {{ range .Params.tags }}
+          <a href="{{ $.Site.LanguagePrefix | absURL }}/tags/{{ . | urlize }}/">{{ . }}</a>&nbsp;
         {{ end }}
+      </div>
+    {{ end }}
 
-        {{ if $.Param "socialShare" }}
-            <hr/>
-            <section id="social-share">
-              <div class="list-inline footer-links">
-                {{ partial "share-links" . }}
-              </div>
-            </section>
-        {{ end }}
+    {{ if .Site.Params.showRelatedPosts }}
+      {{ $related := .Site.RegularPages.Related . | first 3 }}
+      {{ with $related }}
+      <div class="blog-post__related">
+        <h4>{{ i18n "seeAlso" }}</h4>
 
-        {{ if .Site.Params.showRelatedPosts }}
-          {{ $related := .Site.RegularPages.Related . | first 3 }}
-          {{ with $related }}
-          <h4 class="see-also">{{ i18n "seeAlso" }}</h4>
-          <ul>
+        <div class="blog-post__related-posts">
           {{ range . }}
-            <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
           {{ end }}
-          </ul>
-          {{ end }}
-        {{ end }}
-      </article>
-
-      {{ if ne .Type "page" }}
-        <ul class="pager blog-pager">
-          {{ if .PrevInSection }}
-            <li class="previous">
-              <a href="{{ .PrevInSection.Permalink }}" data-toggle="tooltip" data-placement="top" title="{{ .PrevInSection.Title }}">&larr; {{ i18n "previousPost" }}</a>
-            </li>
-          {{ end }}
-          {{ if .NextInSection }}
-            <li class="next">
-              <a href="{{ .NextInSection.Permalink }}" data-toggle="tooltip" data-placement="top" title="{{ .NextInSection.Title }}">{{ i18n "nextPost" }} &rarr;</a>
-            </li>
-          {{ end }}
-        </ul>
+        </div>
+      </div>
       {{ end }}
+    {{ end }}
+  </article>
 
-
-      {{ if (.Params.comments) | or (and (or (not (isset .Params "comments")) (eq .Params.comments nil)) (and .Site.Params.comments (ne .Type "page"))) }}
-        {{ if .Site.DisqusShortname }}
-          {{ if .Site.Params.delayDisqus }}
-          <div class="disqus-comments">                  
-            <button id="show-comments" class="btn btn-default" type="button">{{ i18n "show" }} <span class="disqus-comment-count" data-disqus-url="{{ trim .Permalink "/" }}">{{ i18n "comments" }}</span></button>
-            <div id="disqus_thread"></div>
-
-            <script type="text/javascript">
-              var disqus_config = function () {
-              this.page.url = '{{ trim .Permalink "/" }}';
-            };
-
-          </script>
-          </div>
-          {{ else }}
-          <div class="disqus-comments">
-            {{ template "_internal/disqus.html" . }}
-          </div>
-          {{ end }}
-        {{ end }}
-        {{ if .Site.Params.staticman }}
-          <div class="staticman-comments">
-            {{ partial "staticman-comments.html" . }}
-          </div>
-        {{ end }}
+  {{ if ne .Type "page" }}
+    <ul class="pager blog-pager">
+      {{ if .PrevInSection }}
+        <li class="previous">
+          <a href="{{ .PrevInSection.Permalink }}" data-toggle="tooltip" data-placement="top" title="{{ .PrevInSection.Title }}">
+            &#8249;&nbsp;{{ i18n "previousPost" }}
+          </a>
+        </li>
       {{ end }}
-
-    </div>
-  </div>
+      {{ if .NextInSection }}
+        <li class="next">
+          <a href="{{ .NextInSection.Permalink }}" data-toggle="tooltip" data-placement="top" title="{{ .NextInSection.Title }}">
+            {{ i18n "nextPost" }} &nbsp; &#8250;
+          </a>
+        </li>
+      {{ end }}
+    </ul>
+  {{ end }}
 </div>
 {{ end }}
