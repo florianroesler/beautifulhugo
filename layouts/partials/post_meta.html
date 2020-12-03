@@ -2,5 +2,5 @@
 {{ $datestr := default (i18n "dateFormat") .Site.Params.dateformat | .Date.Format }}
 {{ $datestr }}
 {{ if ne $datestr $lastmodstr }}
-  &nbsp;{{ $lastmodstr  }}
+  {{ $lastmodstr  }}
 {{ end }}

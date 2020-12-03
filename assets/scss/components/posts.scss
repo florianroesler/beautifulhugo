@@ -64,7 +64,8 @@
   min-height: 50vh;
 }
 
-.blog-post__reading_time {
+.blog-post__reading_time, .blog-post__meta {
+  line-height: 32px;
   text-align: center;
   color: $grey-2;
 

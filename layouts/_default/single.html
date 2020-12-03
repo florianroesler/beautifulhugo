@@ -1,12 +1,15 @@
 {{ define "main" }}
 <div class="container" role="main">
-
   <article role="main" class="blog-post">
-    {{ if .Site.Params.readingTime }}
-      <div class="blog-post__reading_time">
-        <i class="fas fa-clock"></i>{{ i18n "readingTime"}}{{ .ReadingTime }} {{ i18n "readTime" }} reading time
-      </div>
-    {{ end }}
+    <div class="blog-post__meta">
+      {{ partial "post_meta.html" . }}
+
+      {{ if .Site.Params.readingTime }}
+        <div class="blog-post__reading_time">
+          <i class="fas fa-clock"></i>{{ i18n "readingTime"}}{{ .ReadingTime }} {{ i18n "readTime" }} reading time
+        </div>
+      {{ end }}
+    </div>
 
     {{ .Content }}
 
