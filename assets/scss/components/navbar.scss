@@ -75,19 +75,21 @@
     background-color: $grey-2;
     transition: transform 0.3s ease-in-out;
 
-    &:last-child {
-      margin-top: 6px;
+    + .navbar__burger-line {
+      margin-top: 4px;
     }
   }
 
   &.active {
     .navbar__burger-line {
+      transform: rotate(45deg);
+
       &:first-child {
-        transform: rotate(45deg) translate(3px, 3px);
+        transform: rotate(45deg) translate(4px, 4px);
       }
 
       &:last-child {
-        transform: rotate(-45deg) translate(3px, -3px);
+        transform: rotate(-45deg) translate(4px, -4px);
       }
     }
 
