@@ -2,7 +2,9 @@
 <div class="container" role="main">
   <article role="main" class="blog-post">
     <div class="blog-post__meta">
-      {{ partial "post_meta.html" . }}
+      <div class="blog-post__meta-details">
+        {{ partial "post_meta.html" . }}
+      </div>
 
       {{ if .Site.Params.readingTime }}
         <div class="blog-post__reading_time">
