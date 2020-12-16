@@ -1,0 +1,14 @@
+{{ $seed := .Inner }}
+{{ $random := md5 $seed }}
+
+<svg id="stacked_bar_{{ $random }}" class="line-chart"></svg>
+
+<script>
+(function () {
+  const svg = document.querySelector('#stacked_bar_{{ $random }}')
+
+  if (svg) {
+    new chartXkcd.StackedBar(svg, {{ .Inner | unmarshal }})
+  }
+})()
+</script>
