@@ -1,0 +1,13 @@
+{{ $seed := .Inner }}
+{{ $random := md5 $seed }}
+
+<canvas id="chart_{{ $random }}"></canvas>
+
+<script>
+(function () {
+  Chart.defaults.global.defaultFontFamily = 'Poppins'
+
+  const ctx = document.getElementById('chart_{{ $random }}').getContext('2d')
+  new Chart(ctx, {{ .Inner | unmarshal }})
+})()
+</script>
