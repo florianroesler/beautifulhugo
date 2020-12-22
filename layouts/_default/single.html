@@ -28,11 +28,20 @@
       {{ $related := .Site.RegularPages.Related . | first 3 }}
       {{ with $related }}
       <div class="blog-post__related">
-        <h4>{{ i18n "seeAlso" }}</h4>
+        <h4>Related Content</h4>
 
         <div class="blog-post__related-posts">
           {{ range . }}
-            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+
+            <a href="{{ .RelPermalink }}">
+              {{ $thumbnailSource := .Resources.GetMatch "images/thumbnail.*" }}
+              {{ if $thumbnailSource}}
+                {{ $thumbnail := $thumbnailSource.Resize "x180 q90" }}
+                <img src="{{ $thumbnail.Permalink }}" alt="{{ .Title }}" />
+              {{ end }}
+
+              <span>{{ .Title }}</span>
+            </a>
           {{ end }}
         </div>
       </div>
