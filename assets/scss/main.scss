@@ -23,7 +23,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 ul {
-  padding-inline-start: 0;
+  padding-inline-start: 24px;
 }
 
 p, li {
@@ -83,6 +83,11 @@ article {
       font-weight: 400;
       text-align: center;
     }
+  }
+
+  hr {
+    margin: 48px 0;
+    border-color: $grey-1;
   }
 }
 
