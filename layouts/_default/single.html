@@ -19,7 +19,7 @@
       <div class="blog-post__tags">
         <h4>Tags</h4>
         {{ range .Params.tags }}
-          <a href="{{ $.Site.LanguagePrefix | absURL }}/tags/{{ . | urlize }}/">{{ . }}</a>&nbsp;
+          <a href="{{ $.Site.LanguagePrefix | absURL }}/tags/{{ . | urlize }}/">{{ . }}</a>
         {{ end }}
       </div>
     {{ end }}
