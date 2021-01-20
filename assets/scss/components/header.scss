@@ -15,7 +15,7 @@
     margin: 0;
   }
 
-  .page-subheading {
+  [class*="-subheading"] {
     display: block;
     font-family: $fontSans;
     color: $grey-2;
